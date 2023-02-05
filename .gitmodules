@@ -1,0 +1,3 @@
+[submodule "sd_outpaint"]
+	path = sd_outpaint
+	url = https://github.com/PhilSad/stable-diffusion-outpainting.git
