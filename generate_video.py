@@ -29,7 +29,7 @@ def create_zoom_video(img, max_zoom=4, zoom_scale=1.01,  interpolation_method=cv
     return frames
 
 def generate_video(base_images_path:str, save_videos_path:str, downscale_factor:int):
-    nb_images = len(list(glob.glob(f'./{base_images_path}/*.jpeg')))
+    nb_images = len(list(glob.glob(f'{base_images_path}/*.jpeg')))
     print(f'{nb_images} found, processing...')
     for i in range(nb_images):
         with open(f'{base_images_path}/{i}.jpeg', 'rb') as f:
@@ -38,27 +38,29 @@ def generate_video(base_images_path:str, save_videos_path:str, downscale_factor:
             
         print(i)
         frames=create_zoom_video(np.array(cur_img) , zoom_scale=1.02, size=(512*4,512*4), max_zoom=downscale_factor)
-        skvideo.io.vwrite(f"./{save_videos_path}/{str(i)}.mp4", np.array(list(reversed(frames))))
+        skvideo.io.vwrite(f"{save_videos_path}/{str(i)}.mp4", np.array(list(reversed(frames))))
         del frames
 
-    nb_clips = len(list(glob.glob(f'{base_images_path}/*.mp4')))
+    nb_clips = len(list(glob.glob(f'{save_videos_path}/*.mp4')))
     with open('input_ffmpeg.txt', 'w') as f:
         for i in range(nb_clips):
-            f.write(f"./{save_videos_path}/{str(i)}.mp4")
+            f.write(f"file {save_videos_path}/{str(i)}.mp4\n")
     
-    os.system('ffmpeg -f concat -safe 0 -i input_ffmpeg.txt -c copy result.mp4 -y')
+    os.system(f'ffmpeg -f concat -safe 0 -i input_ffmpeg.txt -c copy {save_videos_path}/result.mp4 -y')
     
     
 @click.command()
-@click.option('--base_images_path', help='Path of the folder containing the bases images')
-@click.option('--save_videos_path', help='Where to save clips and final video')
+@click.option('--base_images_fullpath', help='Path of the folder containing the bases images')
+@click.option('--save_videos_fullpath', help='Where to save clips and final video')
 @click.option('--downscale_factor',default=4, help='downscale by how much')
-def cmd_generate_video(base_images_path:str, save_videos_path:str, downscale_factor:int):
-    if not os.path.exists(save_videos_path):
-        os.makedirs(save_videos_path)
-    print('ran')
-    generate_video(base_images_path, save_videos_path, downscale_factor)
+def cmd_generate_video(base_images_fullpath:str, save_videos_fullpath:str, downscale_factor:int):
+    if not os.path.exists(save_videos_fullpath):
+        os.makedirs(save_videos_fullpath)
+    generate_video(base_images_fullpath, save_videos_fullpath, downscale_factor)
 
 
 if __name__ == '__main__':
     cmd_generate_video()
+
+
+
