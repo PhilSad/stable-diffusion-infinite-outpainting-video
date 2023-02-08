@@ -2,7 +2,7 @@
 
 Generate an arbitrarly large zoom out / uncropping high quality (2K) video out of a list of prompt.
 
-[Exemple low quality](./assets/)
+[Exemple low quality](https://thumbs.gfycat.com/UntriedJovialAcouchi-mobile.mp4)
 
 # Collab Usage
 
