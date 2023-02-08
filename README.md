@@ -1,11 +1,13 @@
 # stable-diffusion-infinite-outpainting-video
 
-Generate an arbitrarly large zoom out / uncropping video out of a list of prompt.
+Generate an arbitrarly large zoom out / uncropping high quality (2K) video out of a list of prompt.
+
 
 # Collab Usage
 
-[link first stage]
-[link first stage]
+[Generate 8k triplets (Need GPU)](https://colab.research.google.com/github/PhilSad/stable-diffusion-infinite-outpainting-video/blob/main/notebooks/colab_infinite_outpaint_generate_base_images.ipynb)
+[Generate 2k video ( don't need GPU)](https://colab.research.google.com/github/PhilSad/stable-diffusion-infinite-outpainting-video/blob/main/notebooks/colab_infinite_outpaint_generate_video.ipynb)
+
 
 ## Note: google drive permission explaination
 The first step (generation of the base image) need the GPU for stable diffusion & real-ersgan to generate HQ pictures with the GPU. Then each frame is generated on the CPU.
