@@ -47,6 +47,10 @@ python generate_video.py --base_images_fullpath {BASE_IMAGE_DIR} --save_videos_f
 
 The downscale_factor should be let at 4
 
+# Citation
+
+Please link to this repository if you use it in you projects
+
 
 # How does it works?
 ## Outpaintings steps:
