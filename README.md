@@ -8,7 +8,7 @@ SD Exemple:
 
 HD 2K Exemple:
 
-![youtube](https://youtu.be/1sxUNMEJ3Qg)
+[youtube](https://youtu.be/1sxUNMEJ3Qg)
 
 # Colab Usage
 
