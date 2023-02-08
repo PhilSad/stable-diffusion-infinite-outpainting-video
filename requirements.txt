@@ -1,0 +1,6 @@
+git+https://github.com/sberbank-ai/Real-ESRGAN.git
+perlin-noise
+diffusers 
+transformers 
+accelerate
+sk-video
