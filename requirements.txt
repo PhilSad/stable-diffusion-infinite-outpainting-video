@@ -4,3 +4,4 @@ diffusers
 transformers 
 accelerate
 sk-video
+click
