@@ -12,29 +12,40 @@ from PIL import Image
 from itertools import cycle
 
 from diffusers import StableDiffusionInpaintPipeline, StableDiffusionPipeline
-noise11 = PerlinNoise(octaves=10)
-noise12 = PerlinNoise(octaves=5)
+import os
 
-noise21 = PerlinNoise(octaves=10)
-noise22 = PerlinNoise(octaves=5)
+if not os.path.exists('./perlin.png'):
 
-noise31 = PerlinNoise(octaves=10)
-noise32 = PerlinNoise(octaves=5)
+  noise11 = PerlinNoise(octaves=10)
+  noise12 = PerlinNoise(octaves=5)
+
+  noise21 = PerlinNoise(octaves=10)
+  noise22 = PerlinNoise(octaves=5)
+
+  noise31 = PerlinNoise(octaves=10)
+  noise32 = PerlinNoise(octaves=5)
 
 
-def noise_mult_1(i,j, xpix=512,ypix=512):
-  return noise11([i/xpix, j/ypix]) + 0.5 * noise12([i/xpix, j/ypix]) 
+  def noise_mult_1(i,j, xpix=512,ypix=512):
+    return noise11([i/xpix, j/ypix]) + 0.5 * noise12([i/xpix, j/ypix]) 
 
-def noise_mult_2(i,j, xpix=512,ypix=512):
-  return noise21([i/xpix, j/ypix]) + 0.5 * noise22([i/xpix, j/ypix]) 
+  def noise_mult_2(i,j, xpix=512,ypix=512):
+    return noise21([i/xpix, j/ypix]) + 0.5 * noise22([i/xpix, j/ypix]) 
 
-def noise_mult_3(i,j, xpix=512,ypix=512):
-  return noise31([i/xpix, j/ypix]) + 0.5 * noise32([i/xpix, j/ypix]) 
+  def noise_mult_3(i,j, xpix=512,ypix=512):
+    return noise31([i/xpix, j/ypix]) + 0.5 * noise32([i/xpix, j/ypix]) 
 
-print('generating perlin image')
-pic = [[[noise_mult_1(i,j), noise_mult_2(i,j), noise_mult_3(i,j) ] for j in range(512)] for i in range(512)]
-scaled_noise = minmax_scale(np.array(pic).flatten(), (0,255)).reshape((512,512, 3))
-perlin_img = Image.fromarray(scaled_noise.astype(np.uint8))
+  print('generating perlin image')
+  pic = [[[noise_mult_1(i,j), noise_mult_2(i,j), noise_mult_3(i,j) ] for j in range(512)] for i in range(512)]
+  scaled_noise = minmax_scale(np.array(pic).flatten(), (0,255)).reshape((512,512, 3))
+  perlin_img = Image.fromarray(scaled_noise.astype(np.uint8))
+  perlin_img.save('./perlin.png')
+
+else:
+  with open('./perlin.png', 'rb') as f:
+    perlin_img = Image.open(f)
+    perlin_img.load()
+
 
 def get_pos_center(size_base, size_over):
   center = size_base // 2
@@ -61,7 +72,7 @@ def generate_outpainted_images(prompts, n_images):
 
     images = []
 
-    prompt = prompts[0] #todo take multiple prompts sequentialy
+    prompt = prompts[0]
     print('generating first image')
     # Generate first image
     pipe_txt2img = StableDiffusionPipeline.from_pretrained("stabilityai/stable-diffusion-2-1", revision='fp16', torch_dtype=torch.float16 , safety_checker=None)
@@ -69,7 +80,6 @@ def generate_outpainted_images(prompts, n_images):
     pipe_txt2img.enable_attention_slicing()
     cur_image = pipe_txt2img(prompt, height=512, width=512).images[0]
     images.append(cur_image)
-    cur_image.save(f'./save2/0.png')
     del pipe_txt2img
     torch.cuda.empty_cache()
 
@@ -86,8 +96,6 @@ def generate_outpainted_images(prompts, n_images):
 
         init_image, mask_image  = downscale_and_perlin(cur_image, 4)
         cur_image = pipe(prompt=prompt, image=init_image, mask_image=mask_image).images[0]
-        #todo rendre trensparent les pixels du masque de l'image précédente
-        cur_image.save(f'./save2/{str(i)}.png')
         images.append(cur_image)
     return images
 

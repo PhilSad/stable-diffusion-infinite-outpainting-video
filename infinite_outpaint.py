@@ -15,8 +15,8 @@ import time
 from diffusers import StableDiffusionPipeline
 from typing import List
 from glob import glob
-from .outpaint import generate_outpainted_images
-from .super_resolution import generate_base_images_ia
+from outpaint import generate_outpainted_images
+from super_resolution import generate_base_images_ia
 import skvideo.io
 import os
 
@@ -72,10 +72,10 @@ def generate_video(base_images_path:str, save_videos_path, downscale_factor:int)
     
     
 @click.command()
-@click.option('--prompts_path', default=1, help='Path of the file containing the prompt inputs (one prompt per line)')
-@click.option('--n_steps', default=1, help='How many downscale&outpainting steps')
-@click.option('--downscale_factor', default=1, help='downscale by how much')
-@click.option('--save_folder', default=1, help='In wich folder saving the hd base pics for the video')
+@click.option('--prompts_path', help='Path of the file containing the prompt inputs (one prompt per line)')
+@click.option('--n_steps', default=5, help='How many downscale&outpainting steps')
+@click.option('--downscale_factor',default=4, help='downscale by how much')
+@click.option('--save_folder',  help='In wich folder saving the hd base pics for the video')
 def cmd_generate_base_images(prompts_path:str, n_steps:int, downscale_factor:int, save_folder:str):
     if not os.path.exists(save_folder):
         os.makedirs(save_folder)
