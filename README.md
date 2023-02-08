@@ -41,20 +41,20 @@ The downscale_factor should be let at 4
 
 
 # How does it works?
-* Outpaintings steps:
+## Outpaintings steps:
 1. First prompt is generated using stablediffusion 2.1 txt2img 512x512 pix
 2. Previous is scaled down by 4 and pasted at the center of a perlin image
 3. Stable Diffusion inpainting model on image from step 2
 4. Repeat step 2 & 3 n_steps times and save all 512x512 images
 
-* HQ image generation
+## HQ image generation
 1. Create HQ (8K) frames out of consecutive triplets of outpainted images (im1,im2,im3).
 2. Use Real-ERSGAN to upscale by 4 im3, then use PIL to expand by 4 another time (will be downscaled in the video)
 3. Similarly, use Real-ERSGAN to upscale by 4 im2
 4. Paste the 3 upscaled images on top of eachother at the center
 5. Repeat 1,2,3,4 for each consecutive triplets of images
 
-* Video generation
+## Video generation
 1. Take the first HQ image
 2. Zoom x4 at the center and generate each frame by zooming out more and more to generate a frame list
 3. Create a clip out of the frame list
