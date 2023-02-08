@@ -10,7 +10,7 @@ HD 2K Exemple:
 
 ![youtube]()
 
-# Collab Usage
+# Colab Usage
 
 Thoses two steps need to be performed sequencialy:
 
