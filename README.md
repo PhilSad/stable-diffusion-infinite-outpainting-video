@@ -6,8 +6,8 @@ Generate an arbitrarly large zoom out / uncropping high quality (2K) video out o
 
 # Collab Usage
 
-[Generate 8k triplets (Need GPU)](https://colab.research.google.com/github/PhilSad/stable-diffusion-infinite-outpainting-video/blob/main/notebooks/colab_infinite_outpaint_generate_base_images.ipynb)
-[Generate 2k video ( don't need GPU)](https://colab.research.google.com/github/PhilSad/stable-diffusion-infinite-outpainting-video/blob/main/notebooks/colab_infinite_outpaint_generate_video.ipynb)
+1. [Generate 8k triplets (Need GPU)](https://colab.research.google.com/github/PhilSad/stable-diffusion-infinite-outpainting-video/blob/main/notebooks/colab_infinite_outpaint_generate_base_images.ipynb)
+2. [Generate 2k video ( don't need GPU)](https://colab.research.google.com/github/PhilSad/stable-diffusion-infinite-outpainting-video/blob/main/notebooks/colab_infinite_outpaint_generate_video.ipynb)
 
 
 ## Note: google drive permission explaination
