@@ -75,8 +75,8 @@ Please link to this repository if you use it in you projects
 
 
 # TODO
-- [] Interactive outpainting: generate multiple images each steps to let user choose the best
-- [] Improve videos frames generation
+- [ ] Interactive outpainting: generate multiple images each steps to let user choose the best
+- [ ] Improve videos frames generation
 
 # Contributing
 
