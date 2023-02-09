@@ -67,7 +67,7 @@ def downscale_and_perlin(image: PIL.Image.Image, downscale_factor:int):
   return init_img, mask
 
 
-def generate_outpainted_images(prompts, n_images):
+def generate_outpainted_images(prompts, n_images, save_folder):
     torch.cuda.empty_cache()
 
     images = []
@@ -76,9 +76,10 @@ def generate_outpainted_images(prompts, n_images):
     print('generating first image')
     # Generate first image
     pipe_txt2img = StableDiffusionPipeline.from_pretrained("stabilityai/stable-diffusion-2-1", revision='fp16', torch_dtype=torch.float16 , safety_checker=None)
-    pipe_txt2img.to('cuda')   
+    pipe_txt2img.to('cuda')
     pipe_txt2img.enable_attention_slicing()
     cur_image = pipe_txt2img(prompt, height=512, width=512).images[0]
+    cur_image.save(f'{save_folder}/0.jpeg')
     images.append(cur_image)
     del pipe_txt2img
     torch.cuda.empty_cache()
@@ -96,6 +97,8 @@ def generate_outpainted_images(prompts, n_images):
 
         init_image, mask_image  = downscale_and_perlin(cur_image, 4)
         cur_image = pipe(prompt=prompt, image=init_image, mask_image=mask_image).images[0]
+        cur_image.save(f'{save_folder}/{str(i)}.jpeg')
+        
         images.append(cur_image)
     return images
 
