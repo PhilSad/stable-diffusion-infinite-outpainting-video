@@ -3,5 +3,6 @@ perlin-noise
 diffusers 
 transformers 
 accelerate
+scikit-learn
 sk-video
 click
