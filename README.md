@@ -12,7 +12,7 @@ HD 2K Exemple:
 
 # Colab Usage
 
-Thoses two steps need to be performed sequencialy:
+Theses two steps need to be performed sequencialy (Note: step 1 takes ~30 sec/outpainting, step 2 takes 2 min/zoomout: to save GPU time for long videos, these to steps are separated, will add an all-in-one notebook in a future update)
 
 * Step 1: [Colab: Generate 8k outpainting triplets (Need GPU)](https://colab.research.google.com/github/PhilSad/stable-diffusion-infinite-outpainting-video/blob/main/notebooks/colab_infinite_outpaint_generate_base_images.ipynb)
 * Step 2: [Colab: Generate 2k video ( don't need GPU)](https://colab.research.google.com/github/PhilSad/stable-diffusion-infinite-outpainting-video/blob/main/notebooks/colab_infinite_outpaint_generate_video.ipynb)
