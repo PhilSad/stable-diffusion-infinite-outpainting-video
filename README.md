@@ -1,6 +1,6 @@
 # stable-diffusion-infinite-outpainting-video
 
-Generate an arbitrarly large zoom out / uncropping high quality (2K) video out of a list of prompt.
+Generate an arbitrarly large zoom out / uncropping high quality (2K) and seamless video out of a list of prompt with Stable Diffusion and [Real-ESRGAN](https://github.com/xinntao/Real-ESRGAN).
 
 SD Exemple:
 
@@ -49,7 +49,7 @@ The downscale_factor should be let at 4
 
 # Citation
 
-Please link to this repository if you use it in you projects
+Please link to this repository if you use to publish a video
 
 
 # How does it works?
