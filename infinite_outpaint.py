@@ -20,7 +20,7 @@ def generate_base_images(prompts:List[str], n_steps:int, downscale_factor:int, h
 @click.option('--downscale_factor',default=4, help='downscale by how much')
 @click.option('--hq_save_folder', help='In wich folder to save the hd base pics for the video')
 @click.option('--sd_save_folder', help='In wich folder to save the intermediary 512x512 SD pics.')
-def cmd_generate_base_images(prompts_path:str, n_steps:int, downscale_factor:int, save_folder:str):
+def cmd_generate_base_images(prompts_path:str, n_steps:int, downscale_factor:int, hq_save_folder:str, sd_save_folder:str):
     if not os.path.exists(hq_save_folder):
         os.makedirs(hq_save_folder)
     if not os.path.exists(sd_save_folder):
