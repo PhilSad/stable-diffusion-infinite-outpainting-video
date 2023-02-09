@@ -72,3 +72,13 @@ Please link to this repository if you use it in you projects
 3. Create a clip out of the frame list
 4. Repeat 2 & 3 for each HQ image
 5. Concat each clip to create the final video 
+
+
+# TODO
+- [] Interactive outpainting: generate multiple images each steps to let user choose the best
+- [] Improve videos frames generation
+
+# Contributing
+
+I just started working on this project and there is lots of way to improve it. Feel free to open a PR.
+
