@@ -75,7 +75,9 @@ Please link to this repository if you use to publish a video
 
 
 # TODO
+- [ ] Allow more downscales factors
 - [ ] Interactive outpainting: generate multiple images each steps to let user choose the best
+- [ ] Improve seamless effect
 - [ ] Improve videos frames generation
 
 # Contributing
