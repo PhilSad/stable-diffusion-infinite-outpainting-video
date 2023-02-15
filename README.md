@@ -37,7 +37,7 @@ BASE_IMAGE_DIR and BASE_VIDEO_DIR should be in their full path form.
 
 ```bash
 # generate bases images for the video (Need GPU)
-python infinite_outpaint.py --prompts_path input.txt --n_steps {N_STEPS} --downscale_factor 4 --save_folder {BASE_IMAGE_DIR}
+python infinite_outpaint.py --prompts_path ../input.txt --n_steps {N_STEPS} --downscale_factor 4 --hq_save_folder {BASE_IMAGE_DIR} --sd_save_folder {SD_IMAGE_DIR}
 
 # generate the video from the bases images (No GPU required)
 python generate_video.py --base_images_fullpath {BASE_IMAGE_DIR} --save_videos_fullpath {BASE_VIDEO_DIR} --downscale_factor 4 
