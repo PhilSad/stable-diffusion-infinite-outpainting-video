@@ -33,7 +33,11 @@ pip install -r requirements.txt
 ```
 
 # Usage
-BASE_IMAGE_DIR and BASE_VIDEO_DIR should be in their full path form.
+BASE_IMAGE_DIR, BASE_VIDEO_DIR and SD_IMAGE_DIR should be in their full path form.
+
+* BASE_IMAGE_DIR is the folder where the upscaled images are stored
+* SD_IMAGE_DIR is the folder where 512x512 images are stored
+* BASE_VIDEO_DIR is the folder where the video clips and concatenated full video are stored
 
 ```bash
 # generate bases images for the video (Need GPU)
