@@ -10,7 +10,7 @@ HD 2K Exemple:
 
 [youtube (with cool music)](https://youtu.be/1sxUNMEJ3Qg)
 
-# Colab Usage
+# Colab Usage (Recommended)
 
 Theses two steps need to be performed sequencialy (Note: step 1 takes ~30 sec/outpainting, step 2 takes 2 min/zoomout: to save GPU time for long videos, these to steps are separated, will add an all-in-one notebook in a future update)
 
@@ -22,7 +22,9 @@ Theses two steps need to be performed sequencialy (Note: step 1 takes ~30 sec/ou
 The first step (generation of the base image) need the GPU for stable diffusion & real-ersgan to generate HQ pictures with the GPU. Then each frame is generated on the CPU.
 In order to save colab GPU time, each step is in its own collab file. Communication is made throught the mounted google drive folder.
 
-# Install
+# Local Usage (Not actively maintained)
+
+## Install
 
 Create a python env then:
 
@@ -32,7 +34,7 @@ cd stable-diffusion-infinite-outpainting-video
 pip install -r requirements.txt
 ```
 
-# Usage
+## Usage
 BASE_IMAGE_DIR, BASE_VIDEO_DIR and SD_IMAGE_DIR should be in their full path form.
 
 * BASE_IMAGE_DIR is the folder where the upscaled images are stored
