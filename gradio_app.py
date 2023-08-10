@@ -78,7 +78,7 @@ with gr.Blocks() as demo:
 
     with gr.Row():
         save_path = gr.Textbox("/content/drive/MyDrive/stable-diffusion-infinite-outpaint/base_images", lines=1, label="save_path")
-        generate_triplets_btn = gr.Button("Generate HQ Triplets", variant="primary")
+        generate_triplets_btn = gr.Button("Generate HQ Triplets (DELETE EVERYTHING IN SAVE FOLDER)", variant="primary")
     with gr.Row():
         done_triplet = gr.HTML('<b>Done generating triplet!</b> <br /> Now got to <a href="https://colab.research.google.com/github/PhilSad/stable-diffusion-infinite-outpainting-video/blob/main/notebooks/colab_infinite_outpaint_generate_video.ipynb"> this Colab to generate the video</a>', visible=False)
 
@@ -90,4 +90,4 @@ with gr.Blocks() as demo:
     prompt.change(fn=lambda prompt: gr.update(interactive = len(prompt) > 0 ), inputs=prompt, outputs=generate_btn)
     # output_image.change(fn=lambda image: gr.update(interactive = image is not None ), inputs=output_image, outputs=accept_btn)
 
-demo.launch(debug=True, live=True)
+demo.launch(debug=True, share=True)
