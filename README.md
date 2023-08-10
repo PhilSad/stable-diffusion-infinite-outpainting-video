@@ -14,9 +14,16 @@ HD 2K Exemple:
 
 Theses two steps need to be performed sequencialy (Note: step 1 takes ~30 sec/outpainting, step 2 takes 2 min/zoomout: to save GPU time for long videos, these to steps are separated, will add an all-in-one notebook in a future update)
 
-* Step 1: [Colab: Generate 8k outpainting triplets (Need GPU)](https://colab.research.google.com/github/PhilSad/stable-diffusion-infinite-outpainting-video/blob/main/notebooks/colab_infinite_outpaint_generate_base_images.ipynb)
-* Step 2: [Colab: Generate 2k video ( don't need GPU)](https://colab.research.google.com/github/PhilSad/stable-diffusion-infinite-outpainting-video/blob/main/notebooks/colab_infinite_outpaint_generate_video.ipynb)
+* Step 1 
+  * **(NEW)** [Colab: **Gradio App**: Generate 8k outpainting triplets with user interface (Need GPU)](https://colab.research.google.com/github/PhilSad/stable-diffusion-infinite-outpainting-video/blob/main/notebooks/gradio_infinite_outpaint.ipynb)
+  * or
+  * [Colab: Generate 8k outpainting triplets automaticaly (Need GPU)](https://colab.research.google.com/github/PhilSad/stable-diffusion-infinite-outpainting-video/blob/main/notebooks/colab_infinite_outpaint_generate_base_images.ipynb)
+* Step 2: [Colab: Generate 2k video (don't need GPU)](https://colab.research.google.com/github/PhilSad/stable-diffusion-infinite-outpainting-video/blob/main/notebooks/colab_infinite_outpaint_generate_video.ipynb)
 
+## Gradio UI usage
+* You need to upload a starting image (512x512) and a prompt to generate the outpainting
+* In the output gallery, you can select the best outpainting to use as a starting image for the next prompt when clicking "Accept", it will be saved in the accepted gallery
+* Once you've done all the outpaintings steps, generate the HQ triplets by clicking "Generate HQ triplets". Use default path to save to GDrive and use them in the next step.
 
 ## Note: google drive permission explaination
 The first step (generation of the base image) need the GPU for stable diffusion & real-ersgan to generate HQ pictures with the GPU. Then each frame is generated on the CPU.
